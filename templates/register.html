@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+
+        #studynav{
+            color: white;
+            text-decoration: none;
+            font-size: 40px;
+            padding: 8px;
+        }
+        .register-heading{
+            text-align: center;
+        }
+        #registerform{
+            padding: 16px;
+            align-content: center;
+        }
+        .btnRegister{
+            /*float: right;*/
+            /*margin-top: 10%;*/
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            background: #0f1f52;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-light" style="background-color: #0f1f52;">
+    <a class="navbar-brand" href = "#" id="studynav">
+        <img src="images.png" width="100" height="100" class="d-inline-block align-top" alt="">
+        CNU Study Buddy
+    </a>
+
+</nav>
+
+<!--row d-flex justify-content-center-->
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+<div class = "limiter" id = "registerform">
+    <div class="tab-content">
+        <h3 class="register-heading">Register</h3>
+
+        <form method=POST action="/register">
+        <div class="row registerform">
+            <div class="col-md-6">
+            <div class="form-group">
+                {{form.firstName(class_='form-control', placeholder="First Name")}}
+            </div>
+            <div class="form-group">
+                {{form.lastName(class_='form-control', placeholder="Last Name")}}
+            </div>
+            <div class="form-group">
+                {{form.password(class_='form-control', placeholder="Password")}}
+            </div>
+                <div class="form-group">
+                    {{form.confirm(class_='form-control', placeholder="Confirm Password")}}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{form.email(class_='form-control', placeholder="Email")}}
+                </div>
+                <div class="form-group">
+                    {{form.year(class_='form-control')}}
+                </div>
+                <div class="form-group">
+                    {{form.major(class_='form-control', placeholder="Major")}}
+                </div>
+                <input type="submit" class="btnRegister" value="Register"/>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

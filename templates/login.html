@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <style>
+
+        #studynav{
+            color: white;
+            text-decoration: none;
+            font-size: 40px;
+            padding: 8px;
+        }
+        #loginform{
+            align-content: center;
+            justify-content: center;
+            padding: 16px;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-light" style="background-color: #0f1f52;">
+    <a class="navbar-brand" href = "#" id="studynav">
+        <img src="cnu-sail.png" width="100" height="100" class="d-inline-block align-top" alt="">
+        CNU Study Buddy
+    </a>
+
+</nav>
+<div class="container" style="min-height:100% width:80%">
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+</div>
+
+<div class = "limiter row d-flex justify-content-center" id = "loginform">
+
+    <div class = "login100-form">
+        <span class="login100-form-title">
+            <h3>Login</h3>
+        </span>
+        <form method=POST action="/login">
+        <div class = "wrap-input100 validate-input" data-validate="Please enter username">
+            <input class="form-control" type="text" name="username" placeholder="Username" value="{{request.form.username}}">
+            <span class="focus-input100"></span>
+        </div>
+
+        <div class = "wrap-input100 validate-input " data-validate="Please enter password">
+            <input class="form-control" type="password" name="password" placeholder="Password" value="{{request.form.password}}">
+            <!-- {{form.password(class_="input100", placeholder="Password")}} -->
+            <span class="focus-input100"></span>
+        </div>
+        <div class="container-login100-form-btn">
+            <input class="btn btn-default" type="submit" value="Login">
+            </input>
+        </div>
+    </form>
+        <li>
+            <span class="txt1">
+                Don’t have an account?
+            </span>
+
+            <a href="/register" class="txt2">
+                Sign up
+            </a>
+        </li>
+
+    </div>
+</div>
+
+</body>
+
+</html>

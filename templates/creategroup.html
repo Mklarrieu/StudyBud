@@ -1,0 +1,35 @@
+{% extends "loggedinMenu.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+<div class = "limiter" id = "groupform">
+    <div class="tab-content">
+        <h3 class="group-heading">Create New Study Group</h3>
+
+        <form method=POST action="/groupcreation">
+        <div class="row registerform">
+            <div class="col-md-6">
+            <div class="form-group">
+                {{form.title(class_='form-control', placeholder="Title")}}
+            </div>
+            <div class="form-group">
+                {{form.description(class_='form-control', placeholder="Description")}}
+            </div>
+            <div class="form-group">
+                {{form.days(class_='form-control', placeholder="Monday")}} 
+            </div>
+                 <input type="submit" class="btnGroup" value="Group Create"/>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

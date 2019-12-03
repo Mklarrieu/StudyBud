@@ -1,0 +1,63 @@
+{% extends "loggedinMenu.html" %}
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+  <ul class="nav nav-tabs">
+    <li class="nav-link active"><a data-toggle="tab" href="#menu1">Member of Groups</a></li>
+    <li class="nav-link"><a data-toggle="tab" href="#menu2">Owned Groups</a></li>
+  </ul>
+    
+<div class="tab-content">
+    <div id="menu1" class="tab-pane fade in active">
+      <h3>Groups you are a part of</h3>
+      <p>
+      {% for group in member %}
+      {% for item in group %}
+    <div class="groupMountain">
+    	<form method="POST" action="/mygroups">
+    		<div>
+    			<h5>
+    			{{item[1]}}
+    		</h5>
+    		<p>
+    			{{item[2]}}
+    			 <input type="hidden" id="groupId" name="groupId" value={{item[0]}}>
+    		</p>
+    		</div>
+    	<button name="groupbutton" type="submit" value="leave" class="btn btn-success">Leave the Group</button>
+    </form>
+    </div>
+    {% endfor %}
+    {% endfor %}</p>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>Owned Groups</h3>
+      <p>{% for group in owned %}
+    <div class="groupMountain">
+    	<form method="POST" action="/mygroups">
+    		<div>
+    			<h5>
+    			{{group[1]}}
+    		</h5>
+    		<p>
+    			{{group[2]}} <input type="hidden" id="groupId" name="groupId" value={{group[0]}}>
+    		</p>
+    		</div>
+    	<button name="groupbutton" type="submit" value="delete" class="btn btn-success">Delete this group</button>
+    </form>
+    </div>
+    {% endfor %}</p>
+    </div>
+  </div>
+{% endblock %}

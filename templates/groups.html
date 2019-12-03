@@ -1,0 +1,34 @@
+{% extends "loggedinMenu.html" %}
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h1 class="text-center">
+    	All Study Groups
+    </h1>
+
+    {% for group in groups %}
+    <div class="groupMountain">
+    	<form method="POST" action="/groups">
+    		<div>
+    			<h5>
+    			{{group[1]}}
+    		</h5>
+    		<p>
+    			{{group[2]}}
+    		</p>
+    		</div>
+    	<button name="join" type="submit" value={{group[0]}} class="btn btn-success">Join</button>
+    </form>
+    </div>
+    {% endfor %}
+{% endblock %}

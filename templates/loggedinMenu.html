@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Study Buddy</title>
+    <style>
+
+        #studynav{
+            color: white;
+            text-decoration: none;
+            /*font-size: 40px;*/
+            padding: 8px;
+            background-color: #0f1f52;
+        }
+        .Study-heading{
+            text-align: center;
+        }
+        #groupform{
+            padding: 16px;
+            align-content: center;
+        }
+        .btnGroup{
+            /*float: right;*/
+            /*margin-top: 10%;*/
+            border: none;
+            border-radius: 1.5rem;
+            padding: 2%;
+            background: #0f1f52;
+            color: #fff;
+            font-weight: 600;
+            width: 50%;
+            cursor: pointer;
+        }
+        .groupMountain{
+          padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark" id="studynav">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">CNU Study Buddy</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="/groups" id="navbardrop" data-toggle="dropdown">
+        Study Groups
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/groups">All Groups</a>
+        <a class="dropdown-item" href="/mygroups">My Groups</a>
+        <a class="dropdown-item" href="/groupcreation">Create Groups</a>
+      </div>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/profile">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout/">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% block content %} {% endblock%}
+</body>
+</html>
